@@ -1,5 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
+    @livewire('task-index');
+</x-app-layout>
+
+
+
+    {{-- <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Task Dashboard') }}
         </h2>
@@ -89,5 +94,5 @@
                 {{ $tasks->links() }}
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </div> --}}
+

@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function index() {
-        $tasks = Task::where('user_id', auth()->id())
-                    ->latest()
-                    ->paginate(10);
-        return view('tasks.index', compact('tasks'));
+        return view('tasks.index');
     }
+
+    // public function index() {
+    //     $tasks = Task::where('user_id', auth()->id())
+    //                 ->latest()
+    //                 ->paginate(10);
+    //     return view('tasks.index', compact('tasks'));
+    // }
 
     public function create() {
         return view('tasks.create');

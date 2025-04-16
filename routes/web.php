@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Livewire\TaskIndex;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -34,8 +37,8 @@ Route::middleware([
 
 
     Route::middleware(['auth'])->group(function() {
-        // Route::get('/tasks', [TaskController::class, 'index'])
-        //     ->name('tasks.index');
+        Route::get('/tasks', [TaskController::class, 'index'])
+            ->name('tasks.index');
 
         // Route::get('/tasks/create', [TaskController::class, 'create'])
         //     ->name('tasks.create');
@@ -52,14 +55,16 @@ Route::middleware([
         // Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])
         //     ->name('tasks.destroy');
 
-        Route::resource('tasks', TaskController::class);
+        // Route::resource('tasks', TaskController::class);
 
-        Route::get('/tasks/{task}', [TaskController::class, 'show'])
-            ->name('tasks.show');
+        // Route::get('/tasks/{task}', [TaskController::class, 'show'])
+        //     ->name('tasks.show');
 
         Route::middleware('role:admin')->group(function() {
             Route::resource('users', UserController::class);
         });
+
+        // Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
     });
 
 });
